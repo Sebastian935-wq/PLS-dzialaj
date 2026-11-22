@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "fakerangianarchia",
+  "version": "${version}",
+  "name": "Fake Rangi Anarchia.GG",
+  "description": "Lokalne rangi VIP, SVIP, GVIP, POMOCNIK, ADMINISTRATOR, HEADADMIN, TWÓRCA, Właściciel oraz VOUCHER.",
+  "environment": "client",
+  "entrypoints": { "client": ["pl.fakerangi.FakeRangiClient"] },
+  "mixins": ["fakerangi.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": "1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
