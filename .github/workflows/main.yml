@@ -1,0 +1,40 @@
+
+name: Build Fake Rangi v1.5.3
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pobierz kod moda
+        uses: actions/checkout@v4
+
+      - name: Zainstaluj Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Zainstaluj Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.12'
+
+      - name: Zbuduj moda
+        run: gradle clean build --no-daemon --stacktrace
+
+      - name: Zapisz gotowy JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: FakeRangi-v1.5.3-Fabric-1.21.4
+          path: build/libs/*.jar
+          if-no-files-found: error
+          retention-days: 30
